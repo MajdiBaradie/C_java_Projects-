@@ -1,0 +1,52 @@
+import java.util.Scanner;
+import java.lang.Thread;
+
+public class digit_clock {
+    static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int hours, mint, sec;
+
+        
+
+        System.out
+                .print(" welcome in the first program < digital clock in java >  ;\n please enter the time in hours ");
+        hours = sc.nextInt();
+        System.out.print(" \n minutes : ");
+        mint = sc.nextInt();
+        System.out.print(" \n seconds : ");
+        sec = sc.nextInt();
+
+        while (true) {
+            if (sec > 59) {
+                mint++;
+                sec = 0;
+            }
+            if (mint > 59) {
+                hours++;
+                mint = 0;
+            }
+            if (hours > 12)
+                hours = 1;
+
+            System.out.println(" \t \t \t \t -------------------------------------------");
+
+            System.out.println("\t \t \t \t \t \t  " + hours + ":" + mint + ":" + sec);
+            System.out.println(" \t \t \t \t -------------------------------------------");
+
+            sec++;
+            try {
+                Thread.sleep(900);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            clearScreen();
+
+        }
+
+    }
+}
